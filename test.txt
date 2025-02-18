@@ -1,3 +1,0 @@
-Hola
-Mundo
-Esto es get_next_line

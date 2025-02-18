@@ -6,7 +6,7 @@
 /*   By: anareval <anareval@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:18:34 by anareval          #+#    #+#             */
-/*   Updated: 2025/02/18 20:37:07 by anareval         ###   ########.fr       */
+/*   Updated: 2025/02/18 21:23:57 by anareval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		len = ft_strlen(s) - start;
 	s2 = malloc(len + 1);
 	if (!s2)
-		return (free(s2), NULL);
+		return (NULL);
 	while (i < len)
 	{
 		s2[i] = s[i + start];

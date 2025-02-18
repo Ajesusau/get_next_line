@@ -6,7 +6,7 @@
 /*   By: anareval <anareval@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:18:26 by anareval          #+#    #+#             */
-/*   Updated: 2025/02/18 20:44:03 by anareval         ###   ########.fr       */
+/*   Updated: 2025/02/18 21:23:54 by anareval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ char	*get_next_line(int fd)
 	char		*temp;
 	int			lnlen;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd == -1 || BUFFER_SIZE <= 0)
 		return (NULL);
 	bff = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!bff)
-		return (ft_free(&bff));
+		return (NULL);
 	str = bufferjoin(fd, str, bff);
 	free(bff);
 	if (str == NULL || *str == '\0')
@@ -66,10 +66,7 @@ char	*bufferjoin(int fd, char *str, char *bff)
 	{
 		bffrd = read(fd, bff, BUFFER_SIZE);
 		if (bffrd == -1)
-		{
-			free(bff);
-			return (ft_free(&str));
-		}
+			return (free(bff), ft_free(&str));
 		if (bffrd == 0)
 			break ;
 		bff[bffrd] = '\0';
