@@ -6,7 +6,7 @@
 /*   By: anareval <anareval@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:18:40 by anareval          #+#    #+#             */
-/*   Updated: 2025/02/17 16:59:33 by anareval         ###   ########.fr       */
+/*   Updated: 2025/02/18 17:44:29 by anareval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2
+#  define BUFFER_SIZE 42
 # endif
 
 # include <unistd.h>
