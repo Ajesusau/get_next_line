@@ -6,7 +6,7 @@
 /*   By: anareval <anareval@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:18:26 by anareval          #+#    #+#             */
-/*   Updated: 2025/02/18 17:55:20 by anareval         ###   ########.fr       */
+/*   Updated: 2025/02/18 20:44:03 by anareval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,18 @@ char	*get_next_line(int fd)
 	char		*temp;
 	int			lnlen;
 
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
 	bff = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!bff)
 		return (ft_free(&bff));
 	str = bufferjoin(fd, str, bff);
 	free(bff);
-	if (str == 0)
+	if (str == NULL || *str == '\0')
 		return (NULL);
 	line = ft_cutline(str);
+	if (!line)
+		return (ft_free(&str));
 	lnlen = ft_strlnend(str);
 	temp = ft_substr(str, lnlen + 1, (ft_strlen(str) - lnlen));
 	free(str);
@@ -43,11 +47,12 @@ char	*get_next_line(int fd)
 char	*ft_cutline(char *str)
 {
 	char	*line;
+	int		lnlen;
 
-	line = ft_strdup(str);
+	lnlen = ft_strlnend(str);
+	line = ft_substr(str, 0, lnlen + 1);
 	if (!line)
 		return (ft_free(&line));
-	line[ft_strlnend(str) + 1] = '\0';
 	return (line);
 }
 
@@ -61,17 +66,16 @@ char	*bufferjoin(int fd, char *str, char *bff)
 	{
 		bffrd = read(fd, bff, BUFFER_SIZE);
 		if (bffrd == -1)
-			return (ft_free(&str));
-		if (bffrd == 0)
 		{
-			free(str);
-			return (0);
+			free(bff);
+			return (ft_free(&str));
 		}
+		if (bffrd == 0)
+			break ;
 		bff[bffrd] = '\0';
-		if (!str)
+		temp = str;
+		if (!temp)
 			temp = ft_strdup("");
-		else
-			temp = str;
 		str = ft_strjoin(temp, bff);
 		free(temp);
 		if (ft_strchr(bff, '\n'))
@@ -88,9 +92,7 @@ int	ft_strlnend(const char *str)
 	while (str[i])
 	{
 		if (str[i] == '\n')
-		{
 			return (i);
-		}
 		i++;
 	}
 	return (i);
@@ -98,7 +100,7 @@ int	ft_strlnend(const char *str)
 
 void	*ft_free(char **str)
 {
-	free(str);
+	free(*str);
 	*str = NULL;
 	return (NULL);
 }
