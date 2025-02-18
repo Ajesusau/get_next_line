@@ -6,7 +6,7 @@
 /*   By: anareval <anareval@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:18:26 by anareval          #+#    #+#             */
-/*   Updated: 2025/02/18 21:23:54 by anareval         ###   ########.fr       */
+/*   Updated: 2025/02/18 21:35:34 by anareval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*get_next_line(int fd)
 	char		*temp;
 	int			lnlen;
 
-	if (fd == -1 || BUFFER_SIZE <= 0)
+	if (fd == -1 || BUFFER_SIZE <= 0 || read(fd, 0, 0))
 		return (NULL);
 	bff = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!bff)
