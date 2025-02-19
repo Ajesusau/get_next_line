@@ -6,7 +6,7 @@
 /*   By: anareval <anareval@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:18:26 by anareval          #+#    #+#             */
-/*   Updated: 2025/02/19 15:04:41 by anareval         ###   ########.fr       */
+/*   Updated: 2025/02/19 15:34:59 by anareval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ char	*get_next_line(int fd)
 	if (fd == -1 || BUFFER_SIZE <= 0)
 		return (NULL);
 	str = bufferjoin(fd, str);
-	if (str == NULL || *str == '\0')
-		return (NULL);
 	line = ft_cutline(str);
 	if (!line)
 		return (ft_free(&str));
@@ -36,6 +34,8 @@ char	*get_next_line(int fd)
 	temp = ft_substr(str, lnlen + 1, (ft_strlen(str) - lnlen));
 	free(str);
 	str = temp;
+	if (!str)
+		return (ft_free(&line));
 	return (line);
 }
 
@@ -44,6 +44,8 @@ char	*ft_cutline(char *str)
 	char	*line;
 	int		lnlen;
 
+	if (str == NULL || *str == '\0')
+		return (NULL);
 	lnlen = ft_strlnend(str);
 	line = ft_substr(str, 0, lnlen + 1);
 	if (!line)
