@@ -6,7 +6,7 @@
 /*   By: anareval <anareval@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:18:34 by anareval          #+#    #+#             */
-/*   Updated: 2025/02/18 21:23:57 by anareval         ###   ########.fr       */
+/*   Updated: 2025/02/24 16:19:53 by anareval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strdup(const char *str)
 	i = 0;
 	str2 = malloc(ft_strlen(str) + 1);
 	if (!str2)
-		return (free(str2), NULL);
+		return (NULL);
 	while (str[i])
 	{
 		str2[i] = str[i];
@@ -53,7 +53,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	j = 0;
 	str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!str)
-		return (free(str), NULL);
+		return (NULL);
 	while (s1[i])
 	{
 		str[i] = s1[i];
