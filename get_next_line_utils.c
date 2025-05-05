@@ -30,9 +30,9 @@ char	*ft_strdup(const char *str)
 	return (str2);
 }
 
-int	ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
-	int	length;
+	size_t	length;
 
 	length = 0;
 	while (*str)
