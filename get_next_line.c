@@ -6,7 +6,7 @@
 /*   By: anareval <anareval@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:18:26 by anareval          #+#    #+#             */
-/*   Updated: 2025/02/19 15:54:55 by anareval         ###   ########.fr       */
+/*   Updated: 2025/08/25 19:36:45 by anareval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,17 @@ char	*get_next_line(int fd)
 	if (!line)
 		return (ft_free(&str));
 	lnlen = ft_strlnend(str);
-	temp = ft_substr(str, lnlen + 1, (ft_strlen(str) - lnlen));
-	free(str);
-	str = temp;
+	if (lnlen + 1 >= (int)ft_strlen(str))
+	{
+		free(str);
+		str = NULL;
+	}
+	else
+	{
+		temp = ft_substr(str, lnlen + 1, (ft_strlen(str) - lnlen));
+		free(str);
+		str = temp;
+	}
 	return (line);
 }
 
