@@ -1,10 +1,10 @@
-# 📜 get_next_line
+#  get_next_line
 
 **get_next_line** es una función en C desarrollada como parte del plan de estudios de [42 School](https://42.fr).  
 El objetivo del proyecto es implementar una función capaz de **leer líneas completas desde un descriptor de archivo**, gestionando buffers internos y múltiples descriptores de manera eficiente.
 
 
-## 🧠 Objetivos del Proyecto
+##  Objetivos del Proyecto
 
 - Comprender el manejo de **descriptores de archivos** en C.
 - Trabajar con **buffers dinámicos** y controlar su tamaño mediante `BUFFER_SIZE`.
@@ -13,7 +13,7 @@ El objetivo del proyecto es implementar una función capaz de **leer líneas com
 - Manejar múltiples descriptores de archivos a la vez.
 
 
-## 📁 Estructura del Proyecto
+##  Estructura del Proyecto
 ```
 get_next_line/
 ├── get_next_line.c # Implementación principal de get_next_line
@@ -25,7 +25,7 @@ get_next_line/
 
 
 
-## ✅ Funcionalidades Implementadas
+##  Funcionalidades Implementadas
 
 - Lectura de un archivo línea por línea.
 - Manejo de **BUFFER_SIZE** para controlar la lectura parcial.
@@ -34,7 +34,7 @@ get_next_line/
 
 ---
 
-## 🛠️ Compilación
+##  Compilación
 
 Compilar con:
 ```
@@ -42,7 +42,7 @@ cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 get_next_line.c get_next_line_utils.c
 ```
 Donde BUFFER_SIZE puede ajustarse según las necesidades (ejemplo: -D BUFFER_SIZE=1 o -D BUFFER_SIZE=10000).
 
-📌 Uso
+ Uso
 Incluye el archivo de cabecera en tu proyecto:
 ```
 #include "get_next_line.h"
